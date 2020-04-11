@@ -1,8 +1,8 @@
 import React from "react";
-
-const Home : React.FC = () => (
-  <div className="container">
-
+// import BaseLayout from "@src/components/layouts/BaseLayout"
+const Home: React.FC = () => (
+  <div>
+    Hello
   </div>
 )
 
