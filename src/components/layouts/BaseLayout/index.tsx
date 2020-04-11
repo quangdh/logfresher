@@ -10,10 +10,12 @@ import "./styles.scss";
 const BaseLayout: React.FC = (props) => (
   <>
     <BaseHeader />
-    <Container>
+    <Container className="content">
       <Row>
         <Col md={8}>
-          <main>{props.children}</main>
+          <main>
+            {props.children}
+          </main>
         </Col>
         <Col md={4}>
           <SideBarContainer />
