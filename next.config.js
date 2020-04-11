@@ -8,29 +8,6 @@ const withSourceMaps = require('@zeit/next-source-maps');
 
 const Mode = require('frontmatter-markdown-loader/mode');
 
-const blogPostsFolder = './src/content/posts';
-const getPathsForPosts = () => {
-    return fs
-      .readdirSync(blogPostsFolder)
-      .map(blogName => {
-        const trimmedName = blogName.substring(0, blogName.length - 3);
-        return {
-          [`/post/${trimmedName}`]: {
-            page: '/post/[slug]',
-            params: {
-              slug: trimmedName,
-            },
-            query: {
-              slug: trimmedName,
-            },
-          },
-        };
-      })
-      .reduce((acc, curr) => {
-        return { ...acc, ...curr };
-      }, {});
-  };
-
 const nextConfiguration = {
     cssModules: false,
     exportTrailingSlash: true,
@@ -41,15 +18,9 @@ const nextConfiguration = {
         configuration.module.rules.push({
             test: /\.md$/,
             loader: 'frontmatter-markdown-loader',
-            options: { mode: [Mode.REACT] }
+            options: { mode: [Mode.HTML, Mode.REACT] }
         });
         return configuration;
-    },
-    async exportPathMap(defaultPathMap) {
-      return {
-        ...defaultPathMap,
-        ...getPathsForPosts(),
-      };
     }
 }
 
