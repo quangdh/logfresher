@@ -11,14 +11,18 @@ type IProps = {
 const Home: React.FC<IProps> = ({ posts }: IProps) => {
   return (
     <BaseLayout>
-      {posts.map(blogName => {
-        const slug = blogName.substring(0, blogName.length - 3);
-        return (
-          <Link href={`/posts/${slug}`}>
-            <a>{blogName}</a>
-          </Link>
-        )
-      })}
+      <ul>
+        {posts.map(blogName => {
+          const slug = blogName.substring(0, blogName.length - 3);
+          return (
+            <li>
+              <Link href={`/posts/${slug}`}>
+                <a>{blogName}</a>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
     </BaseLayout>
   )
 }
