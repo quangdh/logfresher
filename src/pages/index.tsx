@@ -1,9 +1,9 @@
 import React from "react";
-// import BaseLayout from "@src/components/layouts/BaseLayout"
+import BaseLayout from "components/layouts/BaseLayout";
 const Home: React.FC = () => (
-  <div>
-    Hello
-  </div>
+  <BaseLayout>
+    Home Screen
+  </BaseLayout>
 )
 
 export default Home
